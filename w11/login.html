@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+
+<h2>Login</h2>
+
+<input type="text" id="email" placeholder="Email"><br><br>
+<input type="password" id="password" placeholder="Password"><br><br>
+
+<button onclick="login()">Login</button>
+
+<p><a href="register.html">Create Account</a></p>
+
+<script>
+function login() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+
+    var users = JSON.parse(localStorage.getItem("users")) || [];
+
+    var found = false;
+
+    for(var i=0; i<users.length; i++) {
+        if(users[i].email == email && users[i].password == password) {
+            found = true;
+        }
+    }
+
+    if(found) {
+        alert("Login Success");
+        window.location = "users.html";
+    } else {
+        alert("Invalid Login");
+    }
+}
+</script>
+
+</body>
+</html>

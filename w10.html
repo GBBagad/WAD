@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f5f5f5;
+        }
+
+        .box {
+            width: 300px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #ccc;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin: 2px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>To-Do List</h2>
+
+    <input type="text" id="input" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
+
+    <ul id="list"></ul>
+</div>
+
+<script>
+var tasks = [];
+
+function addTask() {
+    var task = document.getElementById("input").value;
+
+    if(task == "") {
+        alert("Enter task");
+        return;
+    }
+
+    tasks.push(task);
+    document.getElementById("input").value = "";
+    showTasks();
+}
+
+function showTasks() {
+    var data = "";
+
+    for(var i = 0; i < tasks.length; i++) {
+        data += "<li>" + tasks[i] +
+        " <button onclick='editTask(" + i + ")'>Edit</button>" +
+        " <button onclick='deleteTask(" + i + ")'>Delete</button></li>";
+    }
+
+    document.getElementById("list").innerHTML = data;
+}
+
+function deleteTask(i) {
+    tasks.splice(i, 1);
+    showTasks();
+}
+
+function editTask(i) {
+    var newTask = prompt("Edit:", tasks[i]);
+
+    if(newTask != null && newTask != "") {
+        tasks[i] = newTask;
+        showTasks();
+    }
+}
+</script>
+
+</body>
+</html>

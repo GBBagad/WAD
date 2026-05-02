@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+
+<h2>Register</h2>
+
+<input type="text" id="name" placeholder="Name"><br><br>
+<input type="email" id="email" placeholder="Email"><br><br>
+<input type="text" id="mobile" placeholder="Mobile"><br><br>
+<input type="password" id="password" placeholder="Password"><br><br>
+
+<button onclick="register()">Register</button>
+
+<p><a href="login.html">Go to Login</a></p>
+
+<script>
+function register() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var mobile = document.getElementById("mobile").value;
+    var password = document.getElementById("password").value;
+
+    if(name=="" || email=="" || mobile=="" || password=="") {
+        alert("Fill all fields");
+        return;
+    }
+
+    var users = JSON.parse(localStorage.getItem("users")) || [];
+
+    var user = {
+        name: name,
+        email: email,
+        mobile: mobile,
+        password: password
+    };
+
+    // store locally
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    // 🔥 AJAX POST (important)
+    fetch("https://jsonplaceholder.typicode.com/users", {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    alert("Registered Successfully");
+}
+</script>
+
+</body>
+</html>

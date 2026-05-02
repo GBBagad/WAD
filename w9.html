@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+
+<h3>Weather App</h3>
+
+<input type="text" id="city" placeholder="Enter city" class="form-control mb-2">
+<button onclick="getweather()" class="btn btn-primary">Click Me</button>
+
+<h3 id="result" class="mt-3"></h3>
+
+<script>
+let weatherdata = {
+    pune: {temp: 30, humidity: 70, condition: "Cloudy"},
+    mumbai: {temp: 32, humidity: 70, condition: "Cloudy"},
+    delhi: {temp: 35, humidity: 50, condition: "Hot"}
+};
+
+function getweather() {
+    let city = document.getElementById("city").value.toLowerCase();
+
+    setTimeout(function() {
+        if (weatherdata[city]) {
+            let w = weatherdata[city];
+
+            document.getElementById("result").innerHTML =
+                "Temperature: " + w.temp + "°C<br>" +
+                "Humidity: " + w.humidity + "%<br>" +
+                "Condition: " + w.condition;
+        } else {
+            document.getElementById("result").innerHTML = "Result not found";
+        }
+    }, 500);
+}
+</script>
+
+</body>
+</html>

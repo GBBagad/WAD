@@ -1,0 +1,13 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: darkred;
+}
+
+ul {
+    list-style: none;
+}

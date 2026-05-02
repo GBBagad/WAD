@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>User List</h2>
+<ul id="list"></ul>
+
+<script>
+fetch("http://localhost:3000/users")
+.then(res => res.json())
+.then(data => {
+    console.log(data); // 👈 debug
+
+    let output = "";
+
+    for(let i=0; i<data.length; i++){
+        output += "<li>" + data[i].name + " - " + data[i].email + "</li>";
+    }
+
+    document.getElementById("list").innerHTML = output;
+})
+.catch(err => {
+    console.log("Error:", err);
+});
+</script>
+
+</body>
+</html>

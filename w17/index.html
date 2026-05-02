@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Directory</title>
+
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 180px;
+            display: inline-block;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Employee Directory</h2>
+
+<div id="employees"></div>
+
+<script>
+fetch("http://localhost:3000/employees")
+.then(res => res.json())
+.then(data => {
+
+    let output = "";
+
+    for(let i=0; i<data.length; i++) {
+        output += "<div class='card'>" +
+        "<img src='" + data[i].image + "' width='100'><br>" +
+        "<b>" + data[i].name + "</b><br>" +
+        data[i].designation + "<br>" +
+        data[i].department + "<br>" +
+        "₹" + data[i].salary +
+        "</div>";
+    }
+
+    document.getElementById("employees").innerHTML = output;
+});
+</script>
+
+</body>
+</html>

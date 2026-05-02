@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Headphones",
+    "price": 2999,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Smartwatch",
+    "price": 4999,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "name": "Mouse",
+    "price": 999,
+    "image": "https://via.placeholder.com/100"
+  }
+]
