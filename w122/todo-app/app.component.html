@@ -1,0 +1,25 @@
+<h2>To-Do List</h2>
+
+<input [(ngModel)]="task" placeholder="Enter task">
+<button (click)="addTask()">Add</button>
+
+<ul>
+  <li *ngFor="let t of tasks; let i = index">
+    
+    <!-- Display -->
+    <span *ngIf="!t.editing">
+      {{t.name}}
+    </span>
+
+    <!-- Edit -->
+    <input *ngIf="t.editing" [(ngModel)]="t.name">
+
+    <!-- Buttons -->
+    <button (click)="editTask(i)">
+      {{ t.editing ? 'Save' : 'Edit' }}
+    </button>
+
+    <button (click)="deleteTask(i)">Delete</button>
+
+  </li>
+</ul>

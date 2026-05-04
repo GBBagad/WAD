@@ -3,25 +3,26 @@
 <body>
 
 <h2>User List</h2>
-<ul id="list"></ul>
+
+<button onclick="load()">Load</button>
+
+<div id="output"></div>
 
 <script>
-fetch("http://localhost:3000/users")
-.then(res => res.json())
-.then(data => {
-    console.log(data); // 👈 debug
+function load() {
+    fetch("http://localhost:3000/api")
+    .then(res => res.json())
+    .then(data => {
 
-    let output = "";
+        let text = "";
 
-    for(let i=0; i<data.length; i++){
-        output += "<li>" + data[i].name + " - " + data[i].email + "</li>";
-    }
+        for(let i=0; i<data.length; i++){
+            text += data[i].name + " - " + data[i].email + "<br>";
+        }
 
-    document.getElementById("list").innerHTML = output;
-})
-.catch(err => {
-    console.log("Error:", err);
-});
+        document.getElementById("output").innerHTML = text;
+    });
+}
 </script>
 
 </body>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Simple Todo</title>
+</head>
+
+<body ng-controller="myController">
+
+    <h2>Todo List</h2>
+
+    <!-- Input -->
+    <input type="text" ng-model="task" placeholder="Enter task">
+
+    <!-- Add -->
+    <button ng-click="addTask()">Add</button>
+
+    <!-- List -->
+    <ul>
+        <li ng-repeat="t in tasks">
+            {{t}}
+
+            <!-- Edit -->
+            <button ng-click="editTask($index)">Edit</button>
+
+            <!-- Delete -->
+            <button ng-click="deleteTask($index)">Delete</button>
+        </li>
+    </ul>
+
+    <!-- Angular CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller("myController", function($scope) {
+
+            $scope.tasks = [];
+
+            // ADD
+            $scope.addTask = function() {
+                if(!$scope.task){
+                    alert("Enter task");
+                    return;
+                }
+
+                $scope.tasks.push($scope.task);
+                $scope.task = "";
+            };
+
+            // EDIT
+            $scope.editTask = function(index){
+                let newTask = prompt("Edit task", $scope.tasks[index]);
+
+                if(newTask !== null && newTask !== ""){
+                    $scope.tasks[index] = newTask;
+                }
+            };
+
+            // DELETE
+            $scope.deleteTask = function(index){
+                $scope.tasks.splice(index, 1);
+            };
+
+        });
+    </script>
+
+</body>
+</html>

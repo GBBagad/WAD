@@ -1,27 +1,20 @@
-const express = require('express');
+const http = require('http');
 const fs = require('fs');
-const path = require('path');
 
-const app = express();
-const PORT = 3000;
+http.createServer((req, res) => {
 
-// CORS
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-});
+    if(req.url == "/data") {
 
-// API route
-app.get('/employees', (req, res) => {
-    fs.readFile(path.join(__dirname, 'employees.json'), 'utf8', (err, data) => {
-        if (err) {
-            res.send("Error reading file");
-        } else {
-            res.json(JSON.parse(data));
-        }
-    });
-});
+        let data = fs.readFileSync("employees.json");
 
-app.listen(PORT, () => {
+        res.writeHead(200, {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        });
+
+        res.end(data);
+    }
+
+}).listen(3000, () => {
     console.log("Server running on http://localhost:3000");
 });

@@ -3,14 +3,12 @@
     "name": "Gauri",
     "designation": "Developer",
     "department": "IT",
-    "salary": 50000,
-    "image": "https://via.placeholder.com/100"
+    "salary": 50000
   },
   {
     "name": "Rahul",
     "designation": "Manager",
     "department": "HR",
-    "salary": 60000,
-    "image": "https://via.placeholder.com/100"
+    "salary": 60000
   }
 ]

@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    margin: 0;
+    padding: 0;
+}
+
+/* Center container */
+.container {
+    width: 350px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Title */
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Input field */
+input {
+    padding: 10px;
+    width: 65%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Add Button */
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Add button specific */
+button:hover {
+    opacity: 0.9;
+}
+
+/* Task list */
+ul {
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Each task item */
+li {
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Task text */
+li span {
+    flex: 1;
+}
+
+/* Buttons inside list */
+li button {
+    margin-left: 5px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+
+/* Edit button */
+li button:nth-child(2) {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Delete button */
+li button:nth-child(3) {
+    background-color: #f44336;
+    color: white;
+}

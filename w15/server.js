@@ -1,36 +1,21 @@
-const express = require('express');
+const http = require('http');
 const fs = require('fs');
-const path = require('path');
 
-const app = express();
-const PORT = 3000;
+http.createServer((req, res) => {
 
-console.log("Starting server...");
+    if (req.url == "/products") {
 
-// CORS
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-});
+        let data = fs.readFileSync("products.json");
 
-// Root route (important)
-app.get('/', (req, res) => {
-    res.send("Server is running");
-});
+        res.writeHead(200, {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        });
 
-// Products API
-app.get('/products', (req, res) => {
-    fs.readFile(path.join(__dirname, 'products.json'), 'utf8', (err, data) => {
-        if (err) {
-            console.log("File error:", err);
-            return res.send("Error reading file");
-        }
+        res.end(data);
 
-        res.json(JSON.parse(data));
-    });
-});
+    } else {
+        res.end("Server running");
+    }
 
-// 🔥 IMPORTANT: listen LAST
-app.listen(PORT, () => {
-    console.log("Server running on http://localhost:3000");
-});
+}).listen(3000, () => console.log("Server running on http://localhost:3000"))

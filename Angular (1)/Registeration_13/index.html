@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>User System</title>
+</head>
+
+<body ng-controller="myController">
+
+    <h2>User System</h2>
+
+    <!-- Register -->
+    <div ng-show="page=='register'">
+        <input type="text" placeholder="Username" ng-model="name">
+        <input type="password" placeholder="Password" ng-model="pass">
+        <button ng-click="register()">Register</button>
+
+        <p><a href="" ng-click="page='login'">Go to Login</a></p>
+    </div>
+
+    <!-- Login -->
+    <div ng-show="page=='login'">
+        <input type="text" placeholder="Username" ng-model="name">
+        <input type="password" placeholder="Password" ng-model="pass">
+        <button ng-click="login()">Login</button>
+
+        <p><a href="" ng-click="page='register'">Go to Register</a></p>
+    </div>
+
+    <!-- Profile -->
+    <div ng-show="page=='profile'">
+        <h3>Hello {{user.name}}</h3>
+        <button ng-click="logout()">Logout</button>
+    </div>
+
+    <!-- Angular (Offline file) -->
+    <script src="angular.min.js"></script>
+
+    <!-- External JS -->
+    <script src="script.js"></script>
+
+</body>
+</html>
